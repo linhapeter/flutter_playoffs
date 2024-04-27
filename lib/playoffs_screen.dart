@@ -4,6 +4,9 @@ import 'playoff_fab.dart';
 import 'series_list.dart';
 import 'app_bar.dart';
 import 'api_service.dart';  // Import the ApiService
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io' show Platform;
+
 
 
 class PlayoffsScreen extends StatefulWidget {
@@ -58,8 +61,9 @@ class _PlayoffsScreenState extends State<PlayoffsScreen> {
     return Scaffold(
       appBar: CustomAppBar(title: 'PLAYOFFS'),
       body: _isLoading ? Center(child: CircularProgressIndicator()) : _pages[_selectedIndex],
-      bottomNavigationBar: GlobalNavigationBar(),
+      bottomNavigationBar: !kIsWeb && !Platform.isWindows ? GlobalNavigationBar() : null,
       floatingActionButton: const PlayoffFAB(),
     );
-  }
+}
+
 }
