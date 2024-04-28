@@ -4,6 +4,8 @@ import 'app_bar.dart';
 import 'global_navigation_bar.dart';
 import 'api_service.dart';
 import 'playoff_fab.dart';  // Import the ApiService
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io' show Platform;
 
 class SerieDetail extends StatefulWidget {
   // Remove the constructor that takes seriesLetter directly
@@ -68,7 +70,7 @@ class _SerieDetailState extends State<SerieDetail> {
     return Scaffold(
       appBar: CustomAppBar(title: 'PLAYOFFS'),
       body: _isLoading ? Center(child: CircularProgressIndicator()) : _pages[0],
-      bottomNavigationBar: GlobalNavigationBar(),
+      bottomNavigationBar: !kIsWeb && !Platform.isWindows ? GlobalNavigationBar() : null,
       floatingActionButton: const PlayoffFAB(),
     );
   }
