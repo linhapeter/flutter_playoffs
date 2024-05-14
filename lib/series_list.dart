@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'series_detail_screen.dart'; 
+
 
 class SeriesList extends StatelessWidget {
   final List<Map<String, dynamic>> series;
@@ -14,19 +16,15 @@ class SeriesList extends StatelessWidget {
         final serie = series[index];
         return GestureDetector(
           onTap: () {
-            print(serie['seriesLetter']);
-            Navigator.pushNamed(
-              context,
-             
-            '/serieDetail',
-            arguments: {
-              'seriesLetter' :  serie['seriesLetter'].toLowerCase(),
-              'topLogo' : serie['topLogo'],
-              'bottomLogo' : serie['bottomLogo'],
-              'topId' : serie['topId'],
-              'bottomId' : serie['bottomId'],
-            }
-            );
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => SeriesDetailScreen(
+                  seriesLetter :  serie['seriesLetter'].toLowerCase(),
+              topLogo : serie['topLogo'],
+              bottomLogo : serie['bottomLogo'],
+              topId : serie['topId'],
+              bottomId : serie['bottomId'],)),
+              );
+    
           },
           child: Align(
             alignment: Alignment.center,
