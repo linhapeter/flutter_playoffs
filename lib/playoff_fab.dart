@@ -43,11 +43,11 @@ class PlayoffFAB extends StatelessWidget {
 
     // Check platform and assign color
     if (kIsWeb) {
-      fabColor = Colors.orange;  // Color for Web
+      fabColor = Colors.orange;  
     } else if (Platform.isAndroid) {
-      fabColor = Colors.green;   // Color for Android
+      fabColor = Colors.green;   
     } else if (Platform.isWindows) {
-      fabColor = Colors.blue;    // Color for Windows
+      fabColor = Colors.blue;    
     } else {
       fabColor = Colors.grey;    // Default color
     }

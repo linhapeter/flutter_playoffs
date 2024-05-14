@@ -45,10 +45,10 @@ class SeriesList extends StatelessWidget {
                         child: Row(
                           children: [
                             serie['topLogo'] == 'empty' ?
-                            Image.asset(
-                              'assets/images/nhl-filled-logo.png',
+                            Image.network(
+                              'https://th.bing.com/th/id/R.ab652e76aca2bb1596aceebcf51c0a29?rik=4tKBsuKGse6rSw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-lock-picture-lock-2-icon-1600.png&ehk=5bUCk2gxyyG7Z0k6n3F0YYIRoTDMm5tewPGXcT5Ukmw%3d&risl=&pid=ImgRaw&r=0',
                               width: 60,
-                            ) :
+                            )  :
                             SvgPicture.network(
                               serie['topLogo'],
                               width: 60,
@@ -84,8 +84,8 @@ class SeriesList extends StatelessWidget {
                             ),
                             SizedBox(width: 10),
                             serie['bottomLogo'] == 'empty' ?
-                            Image.asset(
-                              'assets/images/nhl-filled-logo.png',
+                            Image.network(
+                              'https://th.bing.com/th/id/R.ab652e76aca2bb1596aceebcf51c0a29?rik=4tKBsuKGse6rSw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-lock-picture-lock-2-icon-1600.png&ehk=5bUCk2gxyyG7Z0k6n3F0YYIRoTDMm5tewPGXcT5Ukmw%3d&risl=&pid=ImgRaw&r=0',
                               width: 60,
                             ) :
                             SvgPicture.network(

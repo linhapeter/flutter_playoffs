@@ -12,12 +12,12 @@ class ApiService {
       var data = jsonDecode(response.body);
       List<Map<String, dynamic>> series = (data['series'] as List).map((s) {
         return {
-          'top': s['topSeedTeam']?['abbrev'] ?? '???', // Use 'TBD' if not available
+          'top': s['topSeedTeam']?['abbrev'] ?? '???', 
           'bottom': s['bottomSeedTeam']?['abbrev'] ?? '???',
-          'topId': s['topSeedTeam']?['id'], // Provide a default or empty string if logo is not available
+          'topId': s['topSeedTeam']?['id'], 
           'bottomId': s['bottomSeedTeam']?['id'],
           'score': '${s['topSeedWins'] ?? 0}-${s['bottomSeedWins'] ?? 0}',
-          'topLogo': s['topSeedTeam']?['logo'] ?? 'empty', // Provide a default or empty string if logo is not available
+          'topLogo': s['topSeedTeam']?['logo'] ?? 'empty', 
           'bottomLogo': s['bottomSeedTeam']?['logo'] ?? 'empty',
           'seriesAbbrev': s['seriesAbbrev'],
           'seriesLetter' : s['seriesLetter'] 
@@ -29,30 +29,6 @@ class ApiService {
     }
   }
 
-  Future<List<Map<String, dynamic>>> fetchGames(String seriesLetter) async {
-    final response = await http.get(Uri.parse('$seriesDetailUrl/$seriesLetter/'));
-
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      List<Map<String, dynamic>> games = (data['games'] as List).map((g) {
-        String score = g['homeTeam']?['score'] != null && g['awayTeam']?['score'] != null
-    ? '${g['homeTeam']['score']}-${g['awayTeam']['score']}'
-    : formatDate(g['startTimeUTC']);
-        return {
-          'gameId' : g['id'],
-          'home': g['homeTeam']?['abbrev'] ?? '???', // Use 'TBD' if not available
-          'away': g['awayTeam']?['abbrev'] ?? '???',
-          'homeId': g['homeTeam']?['id'] ?? '???', // Use 'TBD' if not available
-          'awayId': g['awayTeam']?['id'],
-          'score': score,
-          'startTime': g['startTimeUTC']
-        };
-      }).toList();
-      return games;
-    } else {
-      throw Exception('Failed to load series data');
-    }
-  }
 
  Future<List<Map<String, dynamic>>> fetchGamesAndDetails(String seriesLetter) async {
   final response = await http.get(Uri.parse('$seriesDetailUrl/$seriesLetter/'));
