@@ -29,10 +29,10 @@ class SeriesList extends StatelessWidget {
           child: Align(
             alignment: Alignment.center,
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 600),  // Set maximum width to 600 pixels
+              constraints: BoxConstraints(maxWidth: 600),  
               child: Card(
                 margin: EdgeInsets.all(8.0),
-                color: Colors.grey[850],  // Set the Card background color to a dark shade
+                color: Colors.grey[850],  
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   child: Row(

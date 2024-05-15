@@ -12,18 +12,18 @@ class GamesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: 600), // Set maximum width to 600 pixels
+        constraints: BoxConstraints(maxWidth: 600), 
         child: ListView.builder(
           itemCount: games.length,
           itemBuilder: (context, index) {
             final game = games[index];
             return Card(
               margin: EdgeInsets.all(8.0),
-              color: Colors.grey[850], // Set the Card background color to a dark shade
+              color: Colors.grey[850], 
               child: ExpansionTile(
-                title: buildGameRow(game, context), // The row widget extracted as a method
+                title: buildGameRow(game, context), 
                 children:<Widget>[
-                  StatsTable(game: game), // Use the new StatsTable widget
+                  StatsTable(game: game), 
                 ],
               ),
             );

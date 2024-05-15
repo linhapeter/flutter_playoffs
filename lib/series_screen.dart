@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'series_list.dart'; // Second screen to navigate to
+import 'series_list.dart'; 
 
 class SeriesScreen extends StatelessWidget {
   final int index;

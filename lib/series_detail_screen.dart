@@ -47,7 +47,7 @@ class _SeriesDetailScreenState extends State<SeriesDetailScreen> {
       List<Map<String, dynamic>> gamesData = await ApiService().fetchGamesAndDetails(widget.seriesLetter);
       setState(() {
         _gamesData = gamesData;
-        _printGamesData(gamesData); // More detailed data printing
+        _printGamesData(gamesData);
         print(gamesData);
         _isLoading = false;
       });

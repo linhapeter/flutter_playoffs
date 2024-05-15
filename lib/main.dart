@@ -11,9 +11,9 @@ class MyApp extends StatelessWidget {
       title: 'NHL Playoffs',
       theme: ThemeData.dark().copyWith(
         
-        // Use copyWith to override specific properties on ThemeData.dark()
+       
         progressIndicatorTheme: ProgressIndicatorThemeData(
-          color: Colors.white,  // Set your desired color for progress indicators
+          color: Colors.white,  
         ),
       ),
      home: HomeScreen(),

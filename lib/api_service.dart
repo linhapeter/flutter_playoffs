@@ -46,19 +46,14 @@ class ApiService {
       };
     }).toList();
 
-    // Debug: Print the number of games processed
-    
-
     List<Future<Map<String, dynamic>>> detailsFutures = games.map((game) {
       return ApiService().fetchGameDetails(game['gameId']);
     }).toList();
 
     List<Map<String, dynamic>> additionalDetails = await Future.wait(detailsFutures);
-
-    // Combine details with games
+    
     for (int i = 0; i < games.length; i++) {
-      games[i]['details'] = additionalDetails[i]['teamGameStats'];  // Access the 'teamGameStats' key
-      // Debug: Print each game detail added
+      games[i]['details'] = additionalDetails[i]['teamGameStats'];  
     }
 
     return games;
@@ -73,7 +68,6 @@ Future<Map<String, dynamic>> fetchGameDetails(int gameId) async {
   final response = await http.get(Uri.parse('$gameDetailUrl/$gameId/landing'));
   if (response.statusCode == 200) {
     var data = jsonDecode(response.body);
-    // Ensure it always returns a map.
     return {
       'teamGameStats': data['summary']?['teamGameStats'] ?? {}
     };
@@ -87,6 +81,6 @@ Future<Map<String, dynamic>> fetchGameDetails(int gameId) async {
  
  String formatDate(String dateStr) {
   DateTime dateTime = DateTime.parse(dateStr);
-  // Format the date as mm/dd/yyyy
+
   return '${dateTime.month.toString().padLeft(2, '0')}/${dateTime.day.toString().padLeft(2, '0')}';
 }

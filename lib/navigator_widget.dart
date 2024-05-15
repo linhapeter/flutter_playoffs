@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'series_screen.dart';  // First screen for each tab
+import 'series_screen.dart';  
 
 class NavigatorWidget extends StatelessWidget {
   final int index;

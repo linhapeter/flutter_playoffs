@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'navigator_widget.dart'; // Assuming this is a custom screen for initial content in each tab
-import 'api_service.dart'; // Assuming this is where ApiService is defined
-import 'custom_bottom_nav_bar.dart'; // Ensure this is the correct path to the custom bottom nav bar
+import 'navigator_widget.dart'; 
+import 'api_service.dart'; 
+import 'custom_bottom_nav_bar.dart';
 import 'custom_top_nav_bar.dart';
-import 'playoff_fab.dart'; // Ensure this is the correct path to the custom top nav bar
+import 'playoff_fab.dart'; 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:io' show Platform;
 
@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 4); // Number of tabs
+    _tabController = TabController(vsync: this, length: 4); 
     loadSeriesData();
     _tabController.addListener(_handleTabSelection);
   }
@@ -47,19 +47,19 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   void loadSeriesData() async {
     try {
       List<Map<String, dynamic>> seriesData = await ApiService().fetchSeries();
-      // Filter the series data by series abbreviation
+      
       setState(() {
         r1Series = seriesData.where((s) => s['seriesAbbrev'] == 'R1').toList();
         r2Series = seriesData.where((s) => s['seriesAbbrev'] == 'R2').toList();
         cfSeries = seriesData.where((s) => s['seriesAbbrev'] == 'ECF' || s['seriesAbbrev'] == 'WCF').toList();
         scfSeries = seriesData.where((s) => s['seriesAbbrev'] == 'SCF').toList();
-        _isLoading = false; // Data has been loaded
+        _isLoading = false; 
       });
     } catch (e) {
-      // Handle the error here, e.g., show a snackbar or a dialog
+      
       print("Error fetching series data: $e");
       setState(() {
-        _isLoading = false; // Even if there's an error, stop the loading indicator
+        _isLoading = false; 
       });
     }
   }
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   void _onNavItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      _tabController.index = index; // Sync the TabController with the selected index
+      _tabController.index = index; 
     });
   }
 
@@ -75,14 +75,14 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.0), // Height of your custom app bar
+        preferredSize: Size.fromHeight(80.0), 
         child: CustomTopNavBar(
           currentIndex: _selectedIndex,
           onTap: _onNavItemTapped,
         ),
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator()) // Show loading indicator while data is loading
+          ? Center(child: CircularProgressIndicator()) 
           : TabBarView(
               controller: _tabController,
               children: [

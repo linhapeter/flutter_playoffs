@@ -18,7 +18,7 @@ class CustomTopNavBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10),
       child:  Row(
         children: [
-          Image.asset('assets/images/nhl-logo.png', height: 40), // Ensure this path is correct
+          Image.asset('assets/images/nhl-logo.png', height: 40), 
           SizedBox(width: 10),
           Text('PLAYOFFS', style: TextStyle(color: Colors.white, fontSize: 24)),
            if (kIsWeb || Platform.isWindows) ...[

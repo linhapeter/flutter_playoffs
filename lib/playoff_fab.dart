@@ -41,7 +41,7 @@ class PlayoffFAB extends StatelessWidget {
   Widget build(BuildContext context) {
     Color fabColor;
 
-    // Check platform and assign color
+    
     if (kIsWeb) {
       fabColor = Colors.orange;  
     } else if (Platform.isAndroid) {
@@ -49,7 +49,7 @@ class PlayoffFAB extends StatelessWidget {
     } else if (Platform.isWindows) {
       fabColor = Colors.blue;    
     } else {
-      fabColor = Colors.grey;    // Default color
+      fabColor = Colors.grey;   
     }
 
     return FloatingActionButton(
